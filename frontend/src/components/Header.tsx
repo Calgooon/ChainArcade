@@ -29,6 +29,12 @@ export const Header: React.FC<HeaderProps> = ({ wallet, onWalletConnected }) => 
             >
               Game
             </Link>
+            <Link 
+              to="/leaderboard" 
+              className="hover:text-blue-400 transition-colors duration-200"
+            >
+              Leaderboard
+            </Link>
           </div>
           <ConnectWallet wallet={wallet} onConnected={onWalletConnected} />
         </div>

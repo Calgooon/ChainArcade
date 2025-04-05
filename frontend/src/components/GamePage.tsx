@@ -9,7 +9,7 @@ export const GamePage: React.FC = () => {
     gameRef.current = new GameClient();
     gameRef.current.initializeGame();
 
-    // Cleanup function
+    // Cleanup on unmount
     return () => {
       if (gameRef.current) {
         gameRef.current.cleanup();
@@ -19,8 +19,9 @@ export const GamePage: React.FC = () => {
   }, []);
 
   return (
-    <div id="game-container" className="w-full h-screen bg-black">
-      {/* Game will be rendered here */}
+    <div className="min-h-screen bg-black flex flex-col justify-start items-center">
+      <div className="h-[30vh]"></div>
+      <div id="game-container" className="w-full max-w-4xl mx-auto mt-40" />
     </div>
   );
 }; 

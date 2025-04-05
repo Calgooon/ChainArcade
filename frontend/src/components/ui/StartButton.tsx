@@ -47,9 +47,9 @@ export class StartButton {
   private applyButtonStyles(): void {
     Object.assign(this.button.style, {
       position: 'fixed',
-      bottom: '50px',
+      top: '50%',
       left: '50%',
-      transform: 'translateX(-50%)',
+      transform: 'translate(-50%, -50%)',
       padding: '15px 40px',
       fontSize: '24px',
       backgroundColor: '#00aaff',
@@ -70,13 +70,18 @@ export class StartButton {
   private applyInstructionStyles(): void {
     Object.assign(this.instructionText.style, {
       position: 'fixed',
-      bottom: '110px',
+      top: '120px',
       left: '50%',
       transform: 'translateX(-50%)',
-      color: '#ff9900', // Orange to indicate action needed
-      fontSize: '18px',
       textAlign: 'center',
+      color: '#ffffff',
+      fontSize: '16px',
+      fontFamily: 'Arial, sans-serif',
       zIndex: '2000',
+      backgroundColor: 'rgba(0, 0, 0, 0.7)',
+      padding: '10px 20px',
+      borderRadius: '8px',
+      border: '1px solid #333',
     });
   }
 

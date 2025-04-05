@@ -19,7 +19,8 @@ export class CreditsDisplay {
       Object.assign(this.display.style, {
         position: 'fixed',
         bottom: '50px',
-        right: '20px',
+        left: '50%',
+        transform: 'translateX(-50%)',
         padding: '15px 25px',
         fontSize: '20px',
         backgroundColor: 'rgba(0, 0, 0, 0.7)',
