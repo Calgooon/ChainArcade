@@ -95,7 +95,6 @@ export class GameClient {
     this.environment = new Environment(this.scene, this.worldWidth);
     this.initializeLighting();
 
-    this.connectButton = new ConnectButton(this.wallet, () => this.onWalletConnected());
     this.creditsDisplay = new CreditsDisplay();
     this.startButton = new StartButton(
       this.wallet,
@@ -227,5 +226,62 @@ export class GameClient {
       this.gameContainer.style.filter = 'blur(5px)';
       this.gameContainer.style.pointerEvents = 'none';
     }
+  }
+
+  /**
+   * Cleans up all game resources and stops the game.
+   */
+  cleanup(): void {
+    // Stop the game loop
+    this.gameStarted = false;
+    
+    // Disconnect WebSocket
+    if (this.ws) {
+      this.ws.disconnect();
+    }
+
+    // Remove UI elements
+    if (this.creditsDisplay) {
+      this.creditsDisplay.remove();
+    }
+    if (this.startButton) {
+      this.startButton.remove();
+    }
+    if (this.gameOver) {
+      this.gameOver.remove();
+    }
+
+    // Remove game container
+    if (this.gameContainer) {
+      this.gameContainer.remove();
+    }
+
+    // Clear scene
+    if (this.scene) {
+      while (this.scene.children.length > 0) {
+        this.scene.remove(this.scene.children[0]);
+      }
+    }
+
+    // Dispose of renderer
+    if (this.renderer) {
+      this.renderer.dispose();
+    }
+
+    // Reset all properties
+    this.player = null;
+    this.starfield = null;
+    this.environment = null;
+    this.creditsDisplay = null;
+    this.startButton = null;
+    this.gameOver = null;
+    this.gameContainer = null;
+    this.obstacles = [];
+    this.score = 0;
+    this.speed = 60;
+    this.isGameOver = false;
+    this.gameStarted = false;
+    this.isUnlocked = false;
+    this.token = null;
   }
 }
